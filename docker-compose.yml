@@ -1,0 +1,59 @@
+version: '3'
+services:
+  gateway:
+    container_name: gateway
+    restart: always
+    build: ./gateway
+    ports: 
+      - "8000:8000"
+    networks:
+      - starwars
+    links:
+      - characters
+      - films
+      - planets
+  # No pongo los puertos porque no quiero exponerlos, solo el de gateway
+  characters:
+    container_name: characters
+    restart: always
+    build: ./characters
+    ports: 
+      - ":8001"
+    networks:
+      - starwars
+    links:
+      - database
+
+  films:
+    container_name: films
+    restart: always
+    build: ./films
+    ports: 
+      - ":8002"
+    networks:
+      - starwars
+    links:
+      - database
+
+  planets:
+    container_name: planets
+    restart: always
+    build: ./planets
+    ports: 
+      - ":8003"
+    networks:
+      - starwars
+    links:
+      - database
+
+  database:
+    container_name: database
+    restart: always
+    build: ./database
+    ports: 
+      - ":8004"
+    networks:
+      - starwars
+
+networks:
+  starwars:
