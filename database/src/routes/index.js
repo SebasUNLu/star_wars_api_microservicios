@@ -1,6 +1,5 @@
 const { Router } = require("express");
 const { validateModel } = require("../middlewares");
-const { catchedAsync } = require("../utils");
 const { listModel, getModelById, insertModel } = require("../controllers");
 
 const router = Router();
