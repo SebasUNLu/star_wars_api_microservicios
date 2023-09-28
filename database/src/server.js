@@ -9,7 +9,7 @@ server.use(morgan("dev"));
 server.use(require("./routes"))
 
 server.use((err, req, res, next) => {
-  res.status(500).send({
+  res.status(err.statusCode).send({
     error: true,
     message: err.message
   });
