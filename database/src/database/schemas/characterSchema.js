@@ -1,16 +1,24 @@
 const { Schema } = require("mongoose");
 
 const characterSchema = new Schema({
-  _id: String,
-  name: String,
+  _id: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
   height: String,
   mass: String,
   hair_color: String,
   skin_color: String,
   eye_color: String,
   birth_year: String,
-  // gender: ["male", "female", "unknown", "n/a", "hermaphrodite", "none"],
-  gender: "String",
+  gender: {
+    type: String,
+    enum: ["male", "female", "unknown", "n/a", "hermaphrodite", "none"]
+  },
   // Clasves foráneas
   homeworld: { type: String, ref: "Planet" },
   films: [{ type: String, ref: "Film" }],
@@ -31,7 +39,7 @@ characterSchema.statics.get = async function (id) {
 };
 
 characterSchema.statics.insert = async function (character) {
-  return await this.create(character)
+  return await this.create(character);
 };
 
 module.exports = characterSchema;
