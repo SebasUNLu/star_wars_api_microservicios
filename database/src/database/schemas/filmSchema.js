@@ -40,4 +40,16 @@ filmSchema.statics.insert = async function (film) {
   return await this.create(film);
 };
 
+filmSchema.statics.update = async function (_id, update) {
+  return await this.findOneAndUpdate({ _id }, update)
+    .populate("characters", ["_id", "name"])
+    .populate("planets", ["_id", "name"]);
+};
+
+filmSchema.statics.delete = async function (_id) {
+  return await this.deleteOne({ _id })
+    .populate("characters", ["_id", "name"])
+    .populate("planets", ["_id", "name"]);
+};
+
 module.exports = filmSchema;

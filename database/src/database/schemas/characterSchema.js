@@ -17,7 +17,7 @@ const characterSchema = new Schema({
   birth_year: String,
   gender: {
     type: String,
-    enum: ["male", "female", "unknown", "n/a", "hermaphrodite", "none"]
+    enum: ["male", "female", "unknown", "n/a", "hermaphrodite", "none"],
   },
   // Clasves foráneas
   homeworld: { type: String, ref: "Planet" },
@@ -32,14 +32,26 @@ characterSchema.statics.list = async function () {
     .populate("films", ["_id", "title"]);
 };
 
-characterSchema.statics.get = async function (id) {
-  return await this.findById(id)
+characterSchema.statics.get = async function (_id) {
+  return await this.findById(_id)
     .populate("homeworld", ["_id", "name"])
     .populate("films", ["_id", "title"]);
 };
 
 characterSchema.statics.insert = async function (character) {
   return await this.create(character);
+};
+
+characterSchema.statics.update = async function (_id, update) {
+  return await this.findOneAndUpdate({ _id }, update)
+    .populate("homeworld", ["_id", "name"])
+    .populate("films", ["_id", "title"]);
+};
+
+characterSchema.statics.delete = async function (_id) {
+  return await this.deleteOne({ _id })
+    .populate("homeworld", ["_id", "name"])
+    .populate("films", ["_id", "title"]);
 };
 
 module.exports = characterSchema;
