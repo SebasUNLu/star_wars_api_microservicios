@@ -30,6 +30,8 @@ planetSchema.statics.get = async function (id) {
 };
 
 planetSchema.statics.insert = async function (planet) {
+  const { _id } = planet;
+  if (typeof _id != "string") planet._id = uuidGenerator();
   return await this.create(planet);
 };
 

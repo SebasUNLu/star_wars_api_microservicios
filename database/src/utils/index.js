@@ -1,4 +1,5 @@
 module.exports = {
   catchedAsync: require("./catchedAsync"),
-  response: require("./response")
+  response: require("./response"),
+  uuidGenerator: require("./uuidGenerator")
 };

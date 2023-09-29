@@ -25,6 +25,8 @@ filmSchema.statics.get = async function (id) {
 };
 
 filmSchema.statics.insert = async function (film) {
+  const { _id } = film;
+  if (typeof _id != "string") film._id = uuidGenerator();
   return await this.create(film);
 };
 
