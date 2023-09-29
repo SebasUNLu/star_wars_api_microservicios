@@ -1,22 +1,10 @@
 const { Schema } = require("mongoose");
 
 const filmSchema = new Schema({
-  _id: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-  opening_crawl: {
-    type: String,
-    required: true,
-  },
-  director: {
-    type: String,
-    required: true,
-  },
+  _id: String,
+  title: String,
+  opening_crawl: String,
+  director: String,
   producer: String,
   release_date: Date,
   // Claves foráneas
