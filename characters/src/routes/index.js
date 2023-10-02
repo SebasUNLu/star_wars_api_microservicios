@@ -11,4 +11,10 @@ router.get("/:id", controllers.getCharacterByID);
 // Post
 router.post("/", middlewares.characterValidation, controllers.createCharacter)
 
+// Put
+router.put("/:id", controllers.updateCharacter)
+
+// delete
+router.delete("/:id", controllers.deleteCharacter)
+
 module.exports = router;

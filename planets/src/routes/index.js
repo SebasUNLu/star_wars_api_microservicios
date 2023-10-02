@@ -11,4 +11,10 @@ router.get("/:id", controllers.getPlanetById);
 // Post
 router.post("/", middlewares.planetValidation, controllers.createPlanet)
 
+// Put
+router.put("/:id", controllers.updatePlanet)
+
+// Post
+router.delete("/:id", controllers.deletePlanet)
+
 module.exports = router;
