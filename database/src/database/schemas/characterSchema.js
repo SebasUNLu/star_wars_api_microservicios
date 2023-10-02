@@ -1,5 +1,6 @@
 const { Schema } = require("mongoose");
 const { uuidGenerator } = require("../../utils");
+const validateCharacter = require("../validations/validateCharacterCreation");
 
 const characterSchema = new Schema({
   _id: {
@@ -42,6 +43,7 @@ characterSchema.statics.get = async function (_id) {
 characterSchema.statics.insert = async function (character) {
   const { _id } = character;
   if (typeof _id != "string") character._id = uuidGenerator();
+  validateCharacter(character)
   return await this.create(character);
 };
 
