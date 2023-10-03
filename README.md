@@ -16,7 +16,7 @@
 
 En este repositorio se presenta el proyecto final a entregar del curso de Upskill Backend, orientado a Microservicios, ofrecido por el bootcamp Henry.
 
-Se presenta una estructura de microservicios individuales, cada uno con sus tareas bien definidas, todos deployados en una máquina virtual hosteada en Google Clouds y utilizando la tecnología Docker para levantar los microservicios en contenedores.
+Se presenta una estructura de microservicios individuales, cada uno con sus tareas bien definidas, todos deployados en una máquina virtual hosteada en Google Clouds y utilizando la tecnología Docker para levantar los microservicios en contenedores. La direcciñon IP pública de esta VM es 34.125.249.75 y su único puerto expuesto es el 8000.
 
 Se utiliza para el almacenado de los datos una Base de Datos NoSQL de MongoDB, que guarda colecciones de los documentos nombrados como Characters, Films y Planets. Estos datos tienen de temática la popular saga de películas Star Wars.
 
@@ -48,11 +48,11 @@ La base de datos NoSQL utilizada para almacenar los datos.
 
 1. Desde un cliente deseado (puede ser Insomnia o Postman, o una aplicación Front-end) se hace una petición http al gateway de la aplicación deployado en la máquina virtual
 ```bash
-http://<public_VM_ip>:8000/<model>
+http://34.125.249.75:8000/<model>
 ```
 Por ejemplo, si queremos obtener todos los personajes, realizaremos la siguiente consulta:
 ```bash
-GET http://<public_VM_ip>:8000/characters
+GET http://34.125.249.75:8000/characters
 ```
 
 2. El gateway al recibir la petición primero revisa el modelo utlizado en la consulta. Si es /characters, /films o /planets, redirigirá la petición hacia el microservicio correspondiente. De lo contrario, devolverá 404 Route Not Found.
